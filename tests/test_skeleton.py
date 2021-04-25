@@ -1,25 +1,12 @@
-import pytest
-
-from pyparliment.skeleton import fib, main
+from PyParliment.members.location import find
 
 __author__ = "George Sykes"
 __copyright__ = "George Sykes"
 __license__ = "MIT"
 
 
-def test_fib():
+def test_find():
     """API Tests"""
-    assert fib(1) == 1
-    assert fib(2) == 1
-    assert fib(7) == 13
-    with pytest.raises(AssertionError):
-        fib(-10)
-
-
-def test_main(capsys):
-    """CLI Tests"""
-    # capsys is a pytest fixture that allows asserts agains stdout/stderr
-    # https://docs.pytest.org/en/stable/capture.html
-    main(["7"])
-    captured = capsys.readouterr()
-    assert "The 7-th Fibonacci number is 13" in captured.out
+    test_data = find.search("")
+    assert "int64" not in test_data.dtypes
+    assert len(test_data) == 650
