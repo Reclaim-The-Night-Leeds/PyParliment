@@ -1,4 +1,6 @@
-from PyParliment.members.location import find
+# print(help("modules"))
+
+from pyparliment.members.location import find
 
 __author__ = "George Sykes"
 __copyright__ = "George Sykes"

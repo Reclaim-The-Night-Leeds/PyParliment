@@ -1,5 +1,5 @@
 import requests
-from PyParliment import baseURL
+from pyparliment import baseURL
 import json
 from shapely.geometry import shape
 

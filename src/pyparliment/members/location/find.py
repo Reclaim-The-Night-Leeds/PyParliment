@@ -1,10 +1,10 @@
 import requests
-from PyParliment import baseURL
+from pyparliment import baseURL
 import pandas as pd
 from pandas import json_normalize
 import json
 from math import ceil
-import PyParliment.members.location.constituincy as constituincy
+import pyparliment.members.location.constituincy as constituincy
 from tqdm.auto import tqdm
 
 tqdm.pandas()
