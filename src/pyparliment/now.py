@@ -9,10 +9,7 @@ def get_current(annunciator="CommonsMain"):
     baseURL = "https://now-api.parliament.uk/api/"
     url = baseURL + end_point
     response = requests.request("GET", url)
-    if response.status_code == 200:
-        json_response = json.loads(response.text)
-    else:
-        raise NothingToSay
+    json_response = json.loads(response.text)
 
     return json_response
 
@@ -53,11 +50,3 @@ def get_between_datetime(date_start, date_end, annunciator="CommonsMain"):
                 output = "testing/" + str(current["id"]) + ".json"
                 with open(output, "w") as f:
                     f.write(json.dumps(current, indent=4, sort_keys=True))
-
-
-class NothingToSay(Exception):
-    """Raised when there of the requested type being displayed on the annunciator"""
-
-    def __init__(self):
-        # Call the base class constructor with the parameters it needs
-        super().__init__("The annunciator is not displaying anything at the moment")
