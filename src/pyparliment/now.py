@@ -38,15 +38,16 @@ def get_between_datetime(date_start, date_end, annunciator="CommonsMain"):
     diff = end - start
 
     added_ids = []
+    slides = []
 
     for i in trange(0, int(diff.total_seconds() / 60) + 1):
         time = start + timedelta(minutes=i)
         current = get_by_datetime(time)
-        output = "testing/" + str(current["id"]) + ".json"
+        # output = "testing/" + str(current["id"]) + ".json"
 
         for slide in current["slides"]:
             if (current["id"] not in added_ids) and (slide["soundToPlay"] == 1):
                 added_ids.append(current["id"])
-                output = "testing/" + str(current["id"]) + ".json"
-                with open(output, "w") as f:
-                    f.write(json.dumps(current, indent=4, sort_keys=True))
+                slides.append(current)
+
+    return slides
